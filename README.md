@@ -16,6 +16,6 @@ The server can be started with the following command:
 ```
 
 ### Customizing the Server
-The server can be customized by modifying the `application.properties` file. The following properties can be set:
+The server can be customized by modifying the `application.properties` file, located under `src/main/resources/`. The following properties can be set:
 - `server.port`: The port the server will run on. Default is `8080`. Can be overridden by setting the `SERVER_PORT` environment variable.
 - `websocket.allowed-origins`: The allowed origins for websocket connections. Default is `http://localhost:3000`. Can be overridden by setting the `WEBSOCKET_ALLOWED_ORIGINS` environment variable.
