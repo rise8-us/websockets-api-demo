@@ -110,4 +110,5 @@ public class WebSocketService {
 
         automationThread.start();
     }
+
 }

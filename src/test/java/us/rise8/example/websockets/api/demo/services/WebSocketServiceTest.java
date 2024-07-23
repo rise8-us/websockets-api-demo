@@ -61,17 +61,18 @@ class WebSocketServiceTest {
         progress.getStatus().equals(COMPLETED) && progress.getMessage().contains("WebSocket Automation complete")));
   }
 
-@Test
-void startAutomation_should_fail() throws InterruptedException {
-    doThrow(new InterruptedException()).when(sleepWrapper).sleep(anyInt());
+  @Test
+  void startAutomation_should_fail() throws InterruptedException {
+      doThrow(new InterruptedException()).when(sleepWrapper).sleep(anyInt());
 
-    webSocketService.startAutomation(dto);
-    Thread.sleep(50); // wait for thread to finish
+      webSocketService.startAutomation(dto);
+      Thread.sleep(50); // wait for thread to finish
 
-    InOrder inOrder = inOrder(webSocketHandler);
-    inOrder.verify(webSocketHandler).sendMessage(eq(dto.getTopic()), argThat(progress ->
-        progress.getStatus().equals(STARTED) && progress.getMessage().equals("Initializing")));
-    inOrder.verify(webSocketHandler).sendMessage(eq(dto.getTopic()), argThat(progress ->
-        progress.getStatus().equals(ERRORED) && progress.getMessage().contains("An error occurred. Please try again.")));
-}
+      InOrder inOrder = inOrder(webSocketHandler);
+      inOrder.verify(webSocketHandler).sendMessage(eq(dto.getTopic()), argThat(progress ->
+          progress.getStatus().equals(STARTED) && progress.getMessage().equals("Initializing")));
+      inOrder.verify(webSocketHandler).sendMessage(eq(dto.getTopic()), argThat(progress ->
+          progress.getStatus().equals(ERRORED) && progress.getMessage().contains("An error occurred. Please try again.")));
+  }
+
 }
