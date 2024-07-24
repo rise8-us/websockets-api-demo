@@ -1,3 +1,2 @@
 export spring_profiles_active=kafka
 export PORT=8080
-export HOSTNAME=pod1
